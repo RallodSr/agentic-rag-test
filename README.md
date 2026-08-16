@@ -25,7 +25,7 @@ Orchestration is a sequential **LangGraph `StateGraph`**:
 `START → retrieve → generate → END`, with a shared typed state
 (`query`, `snippets`, `answer`) flowing between the nodes.
 
-- **Data Retriever** — a ReAct agent (`create_react_agent`) configured with the
+- **Data Retriever** — a ReAct agent (`create_agent`) configured with the
   custom `search_knowledge_base` tool. Its instructions force it to always call
   the tool and return raw snippets without answering the question itself.
 - **Report Generator** — a plain LLM call with a synthesizer system prompt. It is

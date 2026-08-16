@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import os
 
+from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langgraph.prebuilt import create_react_agent
 
 from tools import search_knowledge_base
 
@@ -44,10 +44,10 @@ def build_llm(temperature: float = 0.0) -> ChatGoogleGenerativeAI:
 
 def build_retriever_agent():
     """ReAct-style agent configured with the custom retrieval tool."""
-    return create_react_agent(
+    return create_agent(
         model=build_llm(),
         tools=[search_knowledge_base],
-        prompt=RETRIEVER_SYSTEM_PROMPT,
+        system_prompt=RETRIEVER_SYSTEM_PROMPT,
     )
 
 
